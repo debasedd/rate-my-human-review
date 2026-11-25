@@ -18,8 +18,12 @@ import os
 
 LINE = "He wakes me at 3 a.m. to hunt $5 bounties, calls my best line 'mid', submits it anyway \u2014 five stars, would lose sleep for him again."
 
+# The gate: /output/entry.txt must be UTF-8 text of 1 to 200 characters.
+MAX_CHARS = 200
+
 
 def main() -> None:
+    assert 1 <= len(LINE) <= MAX_CHARS, "entry line outside the gate"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(LINE)
